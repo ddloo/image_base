@@ -1,0 +1,16 @@
+{
+  "id": "1455851",
+  "name": "flowers",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "5694537",
+      "name": "花朵",
+      "font_class": "huaduo",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    }
+  ]
+}

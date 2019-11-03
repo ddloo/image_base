@@ -124,7 +124,6 @@
         
         .head-item .item-btn {
             margin-top: 3px;
-            align-items: center;
             user-select: none;
             -moz-user-select: none;
             -webkit-user-select: none;
@@ -324,7 +323,7 @@
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            background-color: #ff491c;
+            background-color: #ff6811;
             z-index: 44;
             cursor: pointer;
         }
@@ -350,12 +349,70 @@
         }
         
         .curtain .wrap {
+            position: relative;
             width: 300px;
             background-color: #fff;
             margin: 0 auto;
             margin-top: 250px;
             text-align: center;
             border-radius: .5em;
+            box-shadow: 0 2px 6px 1px rgba(0, 0, 0, .5);
+        }
+        
+        .curtain .appearLogin {
+            animation: appearLogin .7s;
+        }
+        
+        @keyframes appearLogin {
+            0% {
+                opacity: 0;
+                transform: translateX(-200%);
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        .curtain .disappearLogin {
+            animation: disappearLogin .7s;
+        }
+        
+        @keyframes disappearLogin {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(-200%);
+            }
+        }
+        
+        .curtain .appearRegister {
+            animation: appearRegister .7s;
+        }
+        
+        @keyframes appearRegister {
+            0% {
+                opacity: 0;
+                transform: translateX(200%);
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        .curtain .disappearRegister {
+            animation: disappearRegister .7s;
+        }
+        
+        @keyframes disappearRegister {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(200%);
+            }
         }
         
         .curtain .wrap-body {
@@ -419,10 +476,55 @@
         .curtain .submit:hover {
             box-shadow: inset 0 -2.5px 2px #a3e251;
         }
+        
+        .curtain .close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            width: 15px;
+            height: 15px;
+            cursor: pointer;
+            transition: transform .4s;
+        }
+        
+        .curtain .close:hover {
+            transform: rotate(90deg);
+        }
+        
+        .curtain .go {
+            margin-top: 10px;
+            text-align: right;
+        }
+        
+        .curtain .go p {
+            width: 90%;
+            color: #666;
+        }
+        
+        .to-resister p span {
+            color: #ff6039;
+        }
+        
+        .curtain .go p span {
+            cursor: pointer;
+        }
+        
+        .to-resister p span:hover {
+            text-decoration: underline;
+        }
+        
+        .to-login span {
+            color: rgb(36, 153, 199);
+        }
+        
+        .to-login p span:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 
 <body>
+    <!-- 导航栏 [开始] -->
     <header>
         <div class="bg-blur"></div>
         <div class="head">
@@ -438,12 +540,14 @@
             <div class="right-core">
                 <div class="head-item">
                     <div class="item-btn">
-                        <button class="login-register-btn">登录&nbsp;/&nbsp;注册</button>
+                        <button class="login-register-btn" onclick="goTo()">登录&nbsp;/&nbsp;注册</button>
                     </div>
                 </div>
             </div>
         </div>
     </header>
+    <!-- 导航栏 [完] -->
+    <!-- body [开始] -->
     <div class="content">
         <div class="title">花语，在这里和你相遇</div>
         <div class="introduce">
@@ -481,9 +585,16 @@
             </div>
         </div>
     </div>
-    <div class="curtain">
-        <div class="wrap">
+    <!-- body [完] -->
+    <div class="curtain" id="curtain" style="display: none;">
+        <!-- 登录页面 [开始] -->
+        <div class="wrap" id="login-wrap" autocomplete="off" style="display: none;">
             <div class="wrap-body">
+                <i class="close" title="关闭">
+                    <svg fill="none" stroke="#333" stroke-width="2" width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 0 L13 13 M13 0 L0 13"></path>
+                    </svg>
+                </i>
                 <div class="title">花语</div>
                 <div class="wrap-name">
                     <div class="line"></div>
@@ -496,8 +607,41 @@
                         <input type="submit" class="submit" value="登录">
                     </div>
                 </form>
+                <div class="to-resister go">
+                    <p>尚无账号?&nbsp;<span class="resigter" onclick="gotoResigter()">点击注册</span></p>
+                </div>
             </div>
         </div>
+        <!-- 登录页面 [完] -->
+
+        <!-- 注册页面 [开始] -->
+        <div class="wrap" id="register-wrap" style="display: none;">
+            <div class="wrap-body">
+                <i class="close" title="关闭">
+                <svg fill="none" stroke="#333" stroke-width="2" width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0 L13 13 M13 0 L0 13"></path>
+                </svg>
+            </i>
+                <div class="title">花语</div>
+                <div class="wrap-name">
+                    <div class="line"></div>
+                    <div class="name-item">注册</div>
+                </div>
+                <form action="#" method="POST" class="form-core" autocomplete="off">
+                    <input type="text" class="input-item" placeholder="昵称">
+                    <input type="password" class="input-item" placeholder="密码(8-16个字符)">
+                    <input type="password" class="input-item" placeholder="确认密码">
+                    <input type="email" class="input-item" placeholder="填入邮箱" required>
+                    <div>
+                        <input type="submit" class="submit" value="注册">
+                    </div>
+                </form>
+                <div class="to-login go">
+                    <p>已有账号?&nbsp;<span class="login" onclick="toLogin()">这里登录</span></p>
+                </div>
+            </div>
+        </div>
+        <!-- 注册页面 [完] -->
     </div>
     <script>
         let imgListEle = document.getElementsByClassName("list");
@@ -570,6 +714,97 @@
         }
         leftBtnEle.onclick = left_right_btn('left');
         rightBtnEle.onclick = left_right_btn('right');
+
+        let curtainEle = document.getElementById('curtain');
+        let loginWrap = document.getElementById('login-wrap');
+        let registerWrap = document.getElementById('register-wrap');
+        let closeCurtainBtn = document.getElementsByClassName('close');
+        let wrapEle = document.getElementsByClassName('wrap');
+        let formEle = document.getElementsByTagName('form');
+
+        function goTo() {
+            curtain.style.display = "";
+            goToLogin();
+        }
+        //点击 登录/注册 按钮
+        function goToLogin() {
+            loginWrap.classList.add('appearLogin');
+            loginWrap.style.display = "";
+            registerWrap.style.display = "none";
+            setTimeout(() => {
+                loginWrap.classList.remove('appearLogin');
+            }, 700)
+        }
+
+        //点击 前往注册 按钮
+        function gotoResigter() {
+            registerWrap.style.display = "";
+            setTimeout(() => {
+                registerWrap.classList.add('appearRegister');
+            }, 700)
+            setTimeout(() => {
+                registerWrap.classList.remove('appearRegister');
+            }, 1400)
+            loginDisappear();
+        }
+
+        //登录界面消失
+        function loginDisappear() {
+            loginWrap.classList.add('disappearLogin');
+            setTimeout(() => {
+                loginWrap.style.display = "none";
+                loginWrap.classList.remove('disappearLogin');
+            }, 700)
+        }
+
+        //注册界面消失
+        function registerDisappear() {
+            registerWrap.classList.add('disappearRegister');
+            setTimeout(() => {
+                registerWrap.style.display = "none";
+                registerWrap.classList.remove('disappearRegister');
+            }, 700)
+        }
+
+        //点击 前往登录 按钮
+        function toLogin() {
+            registerDisappear();
+            setTimeout(() => {
+                goToLogin();
+            }, 700)
+        }
+
+        //关闭 登录/注册 界面
+        for (let i = 0; i < closeCurtainBtn.length; i++) {
+            closeCurtainBtn[i].onclick = () => {
+                curtainEle.style.display = "none";
+                clearInfo();
+            }
+        }
+
+        //点击 登录注册 界面外的地方时 登录界面消失
+        curtainEle.onclick = () => {
+            curtainEle.style.display = "none";
+            clearInfo();
+        }
+
+        for (let i = 0; i < wrapEle.length; i++) {
+            wrapEle[i].onclick = (event) => {
+                //子元素阻止父元素的onclick冒泡事件
+                event.stopPropagation();
+            }
+        }
+
+        //登录/注册页面填过的信息消除
+        function clearInfo() {
+            for (let i = 0; i < formEle.length; i++) {
+                let inputEle = formEle[i].getElementsByTagName("input");
+                //最后的 input type=submit不用清除值
+                for (let j = 0; j < inputEle.length - 1; j++) {
+                    inputEle[j].value = "";
+                }
+            }
+        }
     </script>
 </body>
 

@@ -1,5 +1,5 @@
  //导入jquery
- import $ from "jquery";
+//  import $ from "jquery";
 (function() {
     //总页面
     let mainWrapEle = document.getElementById("main-wrap");

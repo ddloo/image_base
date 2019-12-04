@@ -1,0 +1,794 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Helvetica Neue, Helvetica, Arial, Microsoft Yahei, sans-serif;
+}
+body,
+html{
+    background-color: rgb(31, 31, 31);
+    overflow-x: hidden;
+    margin-bottom: 20px;
+}
+ul{
+    list-style-type: none;
+    color: rgb(170, 170, 170);
+}
+a{
+    text-decoration: none;
+}
+button{
+    outline: none;
+}
+.title{
+    color: rgb(200, 200, 200);
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+.curtain{
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.popup{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#main-wrap{
+    max-width: 100%;
+    width: 100%;
+}
+#main-wrap > header .nav-menu{
+    width: 100%;
+    text-align: center;
+    font-family: open sans,arial,sans-serif;
+    border-bottom: 4px solid rgb(190, 173, 18);
+}
+#main-wrap > header .nav-menu > .nav-wrap{
+    height: 40px;
+    margin-top: 30px !important;
+    margin-bottom: 15px;
+    line-height: 40px;
+}
+#main-wrap > header .nav-menu > .nav-wrap > .wrap-head{
+    height: 100%;
+    float: left;
+    margin-left: 15px
+}
+#main-wrap > header .nav-menu > .nav-wrap span{
+    color: rgb(170, 170, 170);
+}
+#main-wrap > header .nav-menu > .nav-wrap > .wrap-head > .menu-img{
+    vertical-align: top;
+    height: 100%;
+}
+#main-wrap > header .nav-menu > .nav-wrap > .wrap-head > .menu-title{
+    font-size: 1.6em;
+}
+#main-wrap > header .nav-menu > .nav-wrap > .wrap-content{
+    display: inline-flex;
+    padding: 5px;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+#main-wrap > header .nav-menu > .nav-wrap > .wrap-content > .menu-div{
+    margin: 0 5px;
+}
+#main-wrap > header .nav-menu > .nav-wrap > .wrap-content > .menu-div > .menu-select{
+    border-radius: 5px;  
+    padding: 2px 10px;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    transition: all .2s linear;
+}
+#main-wrap > header .nav-menu > .nav-wrap > .wrap-content > .menu-div > .menu-select:hover{
+    background-color: rgb(180, 170, 24);
+    color: white;
+}
+#main-wrap > header .nav-menu > .nav-wrap > .wrap-content > .menu-div > #popular-image::before{
+    content: '\f06d';
+    font-family: FontAwesome;
+    padding-right: 10px; 
+}
+#main-wrap > header .nav-menu > .nav-wrap > .wrap-content > .menu-div > #random-image::before{
+    content: '\f074';
+    font-family: FontAwesome;
+    padding-right: 10px; 
+}
+#main-wrap > header .nav-menu > .nav-wrap > .wrap-user{
+    float: right;
+}
+#main-wrap > header .nav-menu > .nav-wrap > .wrap-user ul > #set-user-li,
+#main-wrap > header .nav-menu > .nav-wrap > .wrap-user ul > #login-li{
+    margin: 0 10px;
+    position: relative;
+    padding: 0 15px;
+    float: left;
+    cursor: pointer;
+    z-index: 3;
+    transition: all .2s linear;
+}
+#main-wrap > header .nav-menu > .nav-wrap > .wrap-user ul > .login-user{
+    color: #add8e6;
+}
+#main-wrap > header .nav-menu > .nav-wrap > .wrap-user ul > #set-user-li{
+    margin-right: 50px;
+}
+#main-wrap > header .nav-menu > .nav-wrap > .wrap-user ul li:hover,
+#main-wrap > header .nav-menu > .nav-wrap > .wrap-user ul li #user-ul li:hover{
+    background-color: rgb(180, 170, 24);
+    color: white;
+    border-radius: 5px;
+}
+#main-wrap > header .nav-menu > .nav-wrap > .wrap-user ul li #user-ul{
+    width: 100px;
+    float: left;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    font-size: 14px;
+    transform: translate(-50%, 5px);
+    border-radius: 5px;
+    padding: 15px 0 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: all .3s;
+}
+#main-wrap > header .nav-menu > .nav-wrap > .wrap-user ul > #login-li:hover #user-ul{
+    visibility: visible;
+    opacity: 1;
+    transform: translate(-50%);
+}
+#main-wrap > header .nav-menu > .nav-wrap > .wrap-user ul li #user-ul li{
+    border: 2px solid hsla(0,0%,100%,.5);
+    border-radius: 5px;
+    background-color: rgb(31, 31, 31);
+}
+/* 选择图片种类CSS样式 */
+#main-wrap > .section-wrap{
+    position: relative;
+    margin-left: 15px;
+    margin-top: 50px;
+    background-color: #151515;
+    width: 140px;
+    border: 3px solid #333333;
+    border-radius: 5px;
+}
+#main-wrap > .section-wrap > .section-head{
+    text-align: center;
+}
+#main-wrap > .section-wrap > .section-head span{
+    display: inline-block;
+    padding: 8px 15px;
+    font-size: 16px;
+    color: rgb(180, 180, 180);
+    border-bottom: 1px solid #666666;
+}
+#main-wrap > .section-wrap > .section-content{
+    position: relative;
+}
+#main-wrap > .section-wrap > .section-content ul{
+    font-size: 15px;
+}
+#main-wrap > .section-wrap > .section-content ul li{
+    position: relative;
+    cursor: pointer;
+    border-bottom: 1px solid #444444;
+    height: 44px;
+}
+#main-wrap > .section-wrap > .section-content ul li::before,
+#main-wrap > .section-wrap > .section-content ul li::after{
+    content: "";
+    z-index: 1;
+    position: absolute;
+    left: 14px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    transition: transform .2s ease;
+}
+#main-wrap > .section-wrap > .section-content ul li::before{
+    bottom: 10px;
+    background-color: purple;
+}
+#main-wrap > .section-wrap > .section-content ul li::after{
+    top: 10px;
+    background-color: palevioletred;
+}
+#main-wrap > .section-wrap > .section-content ul > .section-li::before{
+    transform: scale(0);
+}
+#main-wrap > .section-wrap > .section-content ul > .section-li::after{
+    transform: scale(0);
+}
+#main-wrap > .section-wrap > .section-content ul > .section-li:hover::before,
+#main-wrap > .section-wrap > .section-content ul > .section-li:hover::after{
+    transform: scale(1);
+}
+#main-wrap > .section-wrap > .section-content ul li:last-child{
+    border: 0;
+}
+#main-wrap > .section-wrap > .section-content ul li:hover{
+    background-color: #252525;
+}
+#main-wrap > .section-wrap > .section-content ul li span,
+#main-wrap > .section-wrap > .section-content ul li a{
+    display: block;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(180deg, palevioletred 20%, purple 100%);
+    padding: 12px 25px;
+}
+#main-wrap > .section-wrap > .section-content ul > .section-li span:hover,
+#main-wrap > .section-wrap > .section-content ul > .section-li a:hover{
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(180deg, palevioletred 20%, purple 100%);
+}
+#main-wrap > .section-wrap > .section-content ul .section-li span,
+#main-wrap > .section-wrap > .section-content ul .section-li a{
+    -webkit-text-fill-color: rgb(130, 130, 130);
+}
+#main-wrap > .section-wrap > .section-content > .line{
+    position: absolute;
+    top: 0;
+    height: 44px;
+    width: 2px;
+    background-image: linear-gradient(180deg, palevioletred 20%, purple 100%);
+    transition: all .2s ease;
+}
+/* 展示图片CSS */
+#main-wrap > .img-content{
+    position: absolute;
+    top: 105px;
+    left: 200px;
+    min-width: 85%;
+    margin: 90px 20px;
+    margin-top: 0;
+}
+#main-wrap > .img-content > .img-categories{
+    position: relative;
+    margin-top: 10px;
+    border-bottom: 1px solid hsla(0,0%,100%,.5);
+    color: rgb(130, 130, 130);
+}
+#main-wrap > .img-content > .img-categories::after{
+    content: attr(data-name);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.15em;
+    left: 15px;
+    background-color: rgb(31, 31, 31);
+    padding: 0 5px; 
+}
+#main-wrap > .img-content > .img-list{
+    position: relative;
+    margin-top: 15px;
+    padding-right: 80px;
+}
+#main-wrap > .img-content > .img-list > .no-img{
+    text-align: center;
+    padding: 20px 5px;
+}
+#main-wrap > .img-content > .img-list > .no-img p{
+    color: #ccc;
+}
+#main-wrap > .img-content > .img-list > .img-wrap{
+    display: inline-block;
+    cursor: pointer;
+    margin-right: 20px;
+    margin-top: 15px;
+    width: 270px;
+    /* height: 180px; */
+    max-width: 100%;
+    transition: all .2s;
+    vertical-align: top;
+}
+#main-wrap > .img-content > .img-list > .div-wrap{
+    position: absolute;
+}
+#main-wrap > .img-content > .img-list > .img-wrap:hover{
+    transform: scale(1.1);
+    box-shadow: 0 0 10px 2px rgb(190, 173, 18, 0.3);
+}
+#main-wrap > .img-content > .img-list > .img-wrap img{
+    width: 100%;
+    height: 100%;
+}
+/* 分享图片按钮 */
+#main-wrap > .img-content > .share-image-div{
+    /* margin-top: 40px; */
+    padding-bottom: 5px;
+    margin-right: 120px;
+    color: rgb(170, 170, 170);
+}
+
+#main-wrap > .img-content > .share-image-div p{
+    text-align: center;
+}
+#main-wrap > .img-content > .share-image-div p label{
+    color: rgb(180, 170, 24);
+    cursor: pointer;
+}
+#main-wrap > .img-content > .share-image-div p label:hover{
+    border-bottom: .1em solid rgb(180, 170, 24);
+}
+#main-wrap > .img-content > .share-image-div p > #file-input{
+    display: none;
+}
+/* 登录-注册界面 */
+#main-wrap > .login-register{
+    transition: all .5s ease-in;
+}
+#main-wrap > .wrap-disappear-animation{
+    opacity: 0;
+}
+#main-wrap > .login-register > .login-register-wrap{
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%);
+    width: 500px;
+    background-color: #202020;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 2px rgb(190, 173, 18, 0.2);
+}
+#main-wrap > .login-register > .login-register-wrap > .login-register-title{
+    position: relative;
+    padding: 8px 15px;
+    background-color: #444444;
+    border-radius: 5px;
+}
+#main-wrap > .login-register > .login-register-wrap > .login-register-title h3{
+    font-size: 18px;
+    display: inline-block;
+    -webkit-user-select: none;
+    user-select: none;
+}
+#main-wrap > .login-register > .login-register-wrap > .login-register-title span{
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    padding: 0 5px;
+    cursor: pointer;
+    transform: translateY(-50%);
+    font-size: 25px;
+}
+/* 登录-注册通用样式 */
+#main-wrap > .login-register > .login-register-wrap .error{
+    position: absolute;
+    left: 30%;
+    color: rgb(220, 78, 78);
+    user-select: none;
+    -moz-user-select: none;
+}
+#main-wrap > .login-register > .login-register-wrap .btn{
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+    margin-bottom: 40px;
+}
+#main-wrap > .login-register > .login-register-wrap .btn  button{
+    display: inline-block;
+    width: 115px;
+    height: 40px;
+    border: 0;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+#main-wrap > .login-register > .login-register-wrap .btn > .main-btn{
+    margin-left: 50px;
+    color: white;
+    background-color: rgb(180, 170, 24);
+    transition: background .2s linear;
+}
+#main-wrap > .login-register > .login-register-wrap .btn > .register-btn{
+    margin-left: 15px;
+    color: #333333;
+    background-color: #eee;
+    transition: background .2s linear;
+}
+#main-wrap > .login-register > .login-register-wrap .btn > .main-btn:hover{
+    background-color: rgb(221, 209, 39);
+}
+#main-wrap > .login-register > .login-register-wrap .btn > .register-btn:hover{
+    background-color: #ccc;
+}
+#main-wrap > .login-register > .login-register-wrap > .login-wrap > .login-input,
+#main-wrap > .login-register > .login-register-wrap > .register-wrap > .register-content{
+    padding: 15px;
+    font-size: 16px;
+    text-align: center;
+    color: rgb(180, 180, 180);
+}
+#main-wrap > .login-register > .login-register-wrap > .login-wrap > .login-input input,
+#main-wrap > .login-register > .login-register-wrap > .register-wrap > .register-content > .content-wrap input{
+    margin-right: 15px;
+    background-color: #eee;
+    border: 0;
+    padding: 0 8px;
+    height: 100%;
+    width: 250px;
+    border-radius: 4px;
+}
+#main-wrap > .login-register > .login-register-wrap > .login-wrap > .login-input div,
+#main-wrap > .login-register > .login-register-wrap > .register-wrap > .register-content > .content-wrap li{
+    margin: 40px 0;
+    height: 40px;
+}
+#main-wrap > .login-register > .login-register-wrap > .login-wrap > .login-input label,
+#main-wrap > .login-register > .login-register-wrap > .register-wrap > .register-content > .content-wrap label{
+    padding-right: 10px;
+    font-size: 17px;
+}
+#main-wrap > .login-register > .login-register-wrap > .login-wrap > .login-input > .password-input label,
+#main-wrap > .login-register > .login-register-wrap > .register-wrap > .register-content > .content-wrap .register-password,
+.register-email{
+    display: inline-block;
+    letter-spacing: 4px;
+    text-indent: 8px;
+}
+/* 登录样式 */
+#main-wrap > .login-register > .login-register-wrap > .login-wrap{
+    position: relative;
+    transition: all .5s linear;
+    height: 310px;
+    transform-origin: center top;
+}
+#main-wrap > .login-register > .login-register-wrap > .login-wrap > #login-error{
+    top: 5%;
+}
+/* 注册样式 */
+#main-wrap > .login-register > .login-register-wrap > .register-wrap {
+    position: relative;
+    height: 465px;
+    transition: all .5s linear;
+    transform-origin: center top;
+}
+#main-wrap > .login-register > .login-register-wrap > .register-wrap > #register-error{
+    top: 4%;
+}
+#main-wrap > .login-register > .login-register-wrap > .register-wrap > .register-content > .content-wrap div{
+    height: 40px;
+}
+#main-wrap > .login-register > .login-register-wrap > .register-wrap > .register-content > .content-wrap .register-repassword{
+    padding-right: 15px;
+}
+#main-wrap > .login-register > .login-register-wrap > .register-wrap > .register-content > .content-wrap #register-btn{
+    width: 250px;
+}
+#main-wrap > .login-register > .login-register-wrap > .register-wrap > .register-content > .content-wrap > .email-li{
+    margin-bottom: 5px;
+}
+#main-wrap > .login-register > .login-register-wrap > .register-wrap > .register-content > .content-wrap > .login-li{
+    margin: 0;
+    height: 30px;
+}
+#main-wrap > .login-register > .login-register-wrap > .register-wrap > .register-content > .content-wrap > .login-li > .login-div{
+    transform: translateX(20%);
+}
+#main-wrap > .login-register > .login-register-wrap > .register-wrap > .register-content > .content-wrap > .login-li span{
+    font-size: 14px;
+    color: rgb(224, 211, 24);
+    cursor: pointer;
+}
+#main-wrap > .login-register > .login-register-wrap > .register-wrap > .register-content > .content-wrap > .login-li span:hover{
+    text-decoration: underline;
+}
+#main-wrap > .login-register > .login-register-wrap > .register-wrap > .register-content > .content-wrap > .register-btn-li{
+    margin-top: 0px;
+}
+/* 隐藏元素 */
+#main-wrap > .login-register > .login-register-wrap > .hide{
+    height: 0;
+    opacity: 0;
+    transform: scaleY(0);
+}
+/* 展示大图片 */
+#main-wrap > .show-img > .close-div{
+    position: absolute;
+    top: 20px;
+    right: 25px;
+}
+#main-wrap > .show-img > .close-div span{
+    position: relative;
+    font-size: 40px;
+    cursor: pointer;
+    border-radius: 50%;
+    color: rgb(170, 170, 170);
+}
+#main-wrap > .show-img > .close-div span::before{
+    font-family: FontAwesome;
+    content: '\f2d3';
+}
+#main-wrap > .show-img > .img-wrap{
+    position: absolute;
+    max-width: 100%;
+    max-height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#show-img-wrap{
+    max-width: 90%;
+}
+#main-wrap > .show-img > .img-wrap img{
+    width: 100%;
+    height: 100%;
+}
+#main-wrap > .show-img > .img-button{
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0 30px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    text-align: center;
+}
+#main-wrap > .show-img > .img-button span{
+    cursor: pointer;
+    font-size: 30px;
+}
+#main-wrap > .show-img > .img-button > div .img-collect{
+    color: rgb(168, 61, 44);
+}
+#main-wrap > .show-img > .img-button > div .img-collect::before{
+    font-family: FontAwesome;
+    content: '\f08a';
+}
+#main-wrap > .show-img > .img-button > div .is-collect{
+    color: rgb(223, 51, 24);
+}
+#main-wrap > .show-img > .img-button > div .is-collect::before{
+    font-family: FontAwesome;
+    content: '\f004';
+}
+/* 用户还没登录 */
+#main-wrap > .no-login{
+    transition: all .5s linear;
+}
+#main-wrap > .no-login > .no-login-wrap{
+    width: 400px;
+    background-color: #fff;
+    filter: brightness(0.9);
+}
+#main-wrap > .no-login > .no-login-wrap > #close-no-login{
+    position: absolute;
+    right: 10px;
+    padding: 0 5px;
+    cursor: pointer;
+    font-size: 35px;
+    color: rgb(65, 65, 65);
+}
+#main-wrap > .no-login > .no-login-wrap > .no-login-div{
+    width: 290px;
+    margin: 0 auto;
+    padding: 50px 20px;
+}
+#main-wrap > .no-login > .no-login-wrap > .no-login-div img{
+    width: 100%;
+}
+#main-wrap > .no-login > .no-login-wrap > .no-login-div p{
+    margin-top: 20px;
+    font-size: 16px;
+}
+#main-wrap > .no-login > .no-login-wrap > .no-login-div p span{
+    cursor: pointer;
+    color: rgb(247, 180, 0);
+}
+#main-wrap > .no-login > .no-login-wrap > .no-login-div p span:hover{
+    border-bottom: .1em solid rgb(247, 180, 0);
+}
+/* 上传图片错误信息 */
+#main-wrap > .upload-lose{
+    position: fixed;
+    z-index: 99;
+    display: inline-block;
+    padding: 10px 8px;
+    border-radius: 5px;
+    border-width: .2em;
+    border-style: solid;
+    border-color: #e7d424 #c9b928 #c9b928 #c9b928;
+    background: -webkit-linear-gradient(#f1dd23, #c9b928);
+    top: -50px;
+    opacity: 0;
+    left: 50%;
+    animation: in cubic-bezier(0.22, 0.58, 0.12, 0.98) 1s;
+}
+#main-wrap > .upload-lose p{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #444;
+}
+#main-wrap > .uoload-out{
+    transition: all cubic-bezier(0.22, 0.58, 0.12, 0.98) .5s;
+}
+#main-wrap > .hide{
+    display: none;
+}
+/* 上传图片窗口 */
+#main-wrap > .uoload-img-div > .upload-img-wrap{
+    width: 300px;
+    box-shadow: 0 0 10px 2px rgb(190, 173, 18, 0.2);
+    transform-origin: -120% -120%;
+    background-color: #202020;
+    border-radius: 5px;
+    transition: all cubic-bezier(0.075, 0.82, 0.3, 0.9) .4s;
+}
+#main-wrap > .uoload-img-div > .upload-wrap-disappear{
+    transform: scale(0.7);
+    opacity: 0;
+}
+#main-wrap > .uoload-img-div > .upload-img-wrap > .title{
+    position: relative;
+}
+#main-wrap > .uoload-img-div > .upload-img-wrap > .title h4{
+    background-color: #444444;
+    padding: 4px 15px;
+    border-radius: 5px;
+}
+#main-wrap > .uoload-img-div > .upload-img-wrap > .title span{
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    padding: 0 5px;
+    cursor: pointer;
+    transform: translateY(-50%);
+    font-size: 25px;
+}
+#main-wrap > .uoload-img-div > .upload-img-wrap > .upload-img-name{
+    padding: 10px 15px;
+    color: #ddd;
+}
+#main-wrap > .uoload-img-div > .upload-img-wrap > .upload-img-name p{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+}
+#main-wrap > .uoload-img-div > .upload-img-wrap > .upload-img-name p span{
+    color: rgb(230, 230, 0);
+}
+#main-wrap > .uoload-img-div > .upload-img-wrap > .section-div{
+    padding: 10px 10px;
+    margin: 0 8px;
+    color: #ddd;
+    border-top: .05em solid #444444;
+}
+#main-wrap > .uoload-img-div > .upload-img-wrap > #already-div{
+    height: 100px;
+}
+#main-wrap > .uoload-img-div > .upload-img-wrap .section-btn{
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 5px;
+    margin-top: 12px;
+    border-radius: 12px;
+}
+#main-wrap > .uoload-img-div > .upload-img-wrap .section-btn span{
+    display: block;
+    padding: 5px 8px;
+    font-size: 12px;   
+}
+/* 未选择标签 */
+#main-wrap > .uoload-img-div > .upload-img-wrap > .section-div > .section-label{
+    margin-top: 10px;
+}
+#main-wrap > .uoload-img-div > .upload-img-wrap > .section-div > .section-label > .label-btn{
+    border: .1em solid rgb(199, 90, 62);
+}
+#main-wrap > .uoload-img-div > .upload-img-wrap > .section-div > .section-label > .label-btn span{
+    color: #bdab0a;
+}
+#main-wrap > .uoload-img-div > .upload-img-wrap > .section-div > .section-label > .label-btn:hover{
+    border: .1em solid rgb(255, 50, 23);
+}
+#main-wrap > .uoload-img-div > .upload-img-wrap > .section-div > .section-label > .label-btn:hover span{
+    color: yellow;
+}
+/* 已选择标签 */
+#main-wrap > .uoload-img-div > .upload-img-wrap > .section-div > .already-label{
+    margin-top: 10px;
+}
+#main-wrap > .uoload-img-div > .upload-img-wrap > .section-div > .already-label > .already-btn{
+    border: .1em solid rgb(255, 50, 23);
+}
+#main-wrap > .uoload-img-div > .upload-img-wrap > .section-div > .already-label > .already-btn span{
+    color: yellow;
+}
+/* 上传图片按钮 */
+#main-wrap > .uoload-img-div > .upload-img-wrap > .upload-img-file{
+    margin-bottom: 10px;
+}
+#main-wrap > .uoload-img-div > .upload-img-wrap > .upload-img-file > #upload-img-btn{
+    padding: 4px 10px;
+    display: inline-block;
+    color: white;
+    border-radius: 5px;
+    background-color: rgb(156, 147, 23);
+    cursor: pointer;
+    transition: background .2s linear;
+}
+#main-wrap > .uoload-img-div > .upload-img-wrap > .upload-img-file > #upload-img-btn:hover{
+    background-color: rgb(204, 193, 41);
+}
+/* 上传动画 */
+.upload-animation-div{
+    width: 250px;
+    height: 150px;
+    background-color: #202020;
+}
+.upload-animation-div div{
+    padding: 30px 20px 50px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+.upload-animation-div span{
+    display: inline-block;
+    color: #777;
+    font-size: 40px;
+    animation: rotate 1.2s infinite steps(8);
+}
+*:after,
+*:before{
+    box-sizing: border-box;
+}
+.upload-animation-div p{
+    margin-top: 20px;
+    color: white;
+}
+@keyframes rotate{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+.upload-animation-div span::before{
+    font-family: FontAwesome;
+    content: "\f110";
+}
+@font-face {
+    font-family: FontAwesome;
+    src: url('../fonts/fontawesome-webfont.ttf') format('truetype');
+    src: url('../fonts/FontAwesome.otf') format('otf');
+    src: url('../fonts/fontawesome-webfont.woff') format('woff');
+    src: url('../fonts/fontawesome-webfont.eot') format('eot');
+}
+@media screen and (max-width: 740px){
+    #main-wrap > header .nav-menu > .nav-wrap > .wrap-content{
+        display: none;
+    }
+}
+@media screen and (max-width: 440px){
+    #main-wrap > header .nav-menu > .nav-wrap > .wrap-user{
+        display: none;
+    }
+    #main-wrap > header .nav-menu > .nav-wrap > .wrap-head > .menu-title{
+        position: absolute;
+    }
+}
+@keyframes in{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+        transform: translate(0, 7em);
+    }
+}

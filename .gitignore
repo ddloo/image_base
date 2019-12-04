@@ -1,0 +1,8 @@
+node_modules
+
+# 开发环境
+package-lock.json
+gulpfile.js
+
+# 上线环境
+static

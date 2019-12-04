@@ -1,0 +1,35 @@
+{
+  "name": "ddloowallpaper",
+  "version": "1.0.0",
+  "description": "图片库",
+  "main": "index.js",
+  "dependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "axios": "^0.19.0",
+    "babelify": "^10.0.0",
+    "browserify": "^16.5.0",
+    "gulp-cli": "^2.2.0",
+    "gulp-csso": "^4.0.1",
+    "gulp-uglify": "^3.0.2",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "jquery": "^3.4.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ddloo/test.git"
+  },
+  "author": "ddloo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ddloo/test/issues"
+  },
+  "homepage": "https://github.com/ddloo/test#readme"
+}

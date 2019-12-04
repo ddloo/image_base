@@ -1,0 +1,11 @@
+Options -indexes
+<IFModule rewrite_module>
+    RewriteEngine on
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule api/(.*)/(.*) php/entrance.php?handler=$1&method=$2 [QSA,L]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^.*$ image.html
+</IFModule>

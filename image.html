@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>test</title>
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <div id="main-wrap">
+        <!-- 标题 -->
+        <header>
+            <nav class="nav-menu">
+                <div class="nav-wrap">
+                    <div class="wrap-head">
+                        <img class="menu-img" src="img/okk//join-us.png">
+                        <span class="menu-title title">Wallpaper</span>
+                    </div>
+                    <div class="wrap-content">
+                        <div class="menu-div"  id="popular-div">
+                            <span class="menu-select" id="popular-image">热门壁纸</span>
+                        </div>
+                        <div class="menu-div" id="random-div">
+                            <span class="menu-select" id="random-image">随机壁纸</span>
+                        </div>
+                    </div>
+                    <div class="wrap-user">
+                        <ul>
+                            <li id="login-li">用户登录</li>
+                            <li id="set-user-li">设置</li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <!-- 选择图片种类 -->
+        <!-- CATEGORIES -->
+        <div class="section-wrap">
+            <div class="section-head">
+                <span>图片分类</span>
+            </div>
+            <nav class="section-content">
+                <ul id="section-ul"></ul>
+            </nav>
+        </div>
+        <!-- 展示图片 -->
+        <div class="img-content"> 
+            <div class="share-image-div">
+                <p>想分享图片,点击<input type="file" id="file-input" accept="image/gif,image/jpeg,image/jpg,image/png"><label
+                        id="file-label" for="file-input" title="">这里上传</label>图片</p>
+            </div>     
+            <div class="img-categories" id="img-categories-div" data-name="最新壁纸"></div>
+            <div class="img-list" id="img-list-div"></div>
+        </div>
+        <!-- 登录-注册界面 -->
+        <div class="login-register curtain wrap-appear-animation" id="login-register-div" style="display: none">
+            <div class="login-register-wrap">
+                <!-- 标题 -->
+                <div class="login-register-title title">
+                    <h3 id="login-register-h3">登录</h3>
+                    <span id="cancel">×</span>
+                </div>
+                <!-- 登录界面 -->
+                <div class="login-wrap" id="login-wrap">
+                    <span id="login-error" class="error"></span>
+                    <div class="login-input">
+                        <div class="name-input">
+                            <label for="login-name">用户名</label>
+                            <input id="login-name" placeholder="请输入你的用户名" type="text">
+                        </div>
+                        <div class="password-input">
+                            <label for="login-password">密码</label>
+                            <input id="login-password" placeholder="请输入密码" type="password">
+                        </div>
+                    </div>
+                    <div class="btn">
+                        <button class="main-btn" id="login-btn">登录</button>
+                        <button class="register-btn" id="go-register">注册</button>
+                    </div>
+                </div>
+                <!-- 注册界面 -->
+                <div class="register-wrap hide" id="register-wrap">
+                    <span class="error" id="register-error"></span>
+                    <div class="register-content">
+                        <ul class="content-wrap">
+                            <li>
+                                <div class="register-name">
+                                    <label for="register-name">用户名</label>
+                                    <input type="text" id="register-name" placeholder="请告诉人家你的账号" autocomplete="off">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="register-password">
+                                    <label for="register-password">密码</label>
+                                    <input type="password" id="register-password" placeholder="人家不会偷看你的密码的">
+                                </div>
+                            </li>
+                            <li>
+                                <div class="register-repassword">
+                                    <label for="register-repassword">确认密码</label>
+                                    <input type="password" id="register-repassword" placeholder="再次确认密码">
+                                </div>
+                            </li>
+                            <li class="email-li">
+                                <div class="register-email">
+                                    <label for="register-email">邮箱</label>
+                                    <input type="email" id="register-email" placeholder="用于找回密码">
+                                </div>
+                            </li>
+                            <li class="login-li">
+                                <div class="login-div">
+                                    <span class="login-span" id="login-span">已有账号?直接登录</span>
+                                </div>
+                            </li>
+                            <li class="register-btn-li">
+                                <div class="btn">
+                                    <button class="main-btn" id="register-btn">注册</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 展示大图片 -->
+        <div class="show-img hide" id="show-img">
+            <div class="img-wrap" id="show-img-wrap">
+                <img src="" alt="" id="on-img">
+            </div>
+            <div class="img-button">
+                <div>
+                    <span class="img-collect" id="img-collect" title="收藏/取消收藏"></span>
+                </div>
+            </div>
+            <div class="close-div" id="close-image-div">
+                <span class="window-close"></span>
+            </div>
+        </div>
+        <!-- 还没登录信息提示 -->
+        <div class="no-login curtain" id="no-login" style="display: none">
+            <div class="no-login-wrap popup">
+                <span id="close-no-login">×</span>
+                <div class="no-login-div">
+                    <img src="img/okk/no-login.jpg" alt="图片加载失败">
+                    <p>你还没登录┭┮﹏┭┮，点击<span id="no-login-span">这里登录</span></p>
+                </div>
+            </div>
+        </div>
+        <!-- 分享图片窗口 -->
+        <div class="uoload-img-div curtain" id="uoload-img-div" style="display: none;">
+            <div class="upload-img-wrap popup">
+                <div class="title">
+                    <h4>上传图片</h4>
+                    <span id="close-upload">×</span>
+                </div>
+                <div class="upload-img-name">
+                    <p>图片名为&nbsp;:&nbsp;<span id="img-file-name"></span></p>
+                </div>
+                <div class="section-div">
+                    <p>请为你的图片选上一个标签&nbsp;:</p>
+                    <div class="section-label" id="unselect-div"></div>
+                </div>
+                <div class="section-div" id="already-div" style="border: 0">
+                    <p>选择的标签为&nbsp;:</p>
+                    <div class="already-label" id="select-div">
+                        <!-- <label class="already-btn section-btn" data-name="animal"><span>动物</span></label> -->
+                    </div>
+                </div>
+                <div class="upload-img-file section-div">
+                    <div id="upload-img-btn">点击上传</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery-3.1.4.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

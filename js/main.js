@@ -80,6 +80,8 @@
     let randomDivEle = document.getElementById("random-div");
     //喜欢,收藏按钮
     let collectBtnEle = document.getElementById("img-collect");
+    let minWidth = 960; //最小宽度
+    let minHeight = 540; //最小高度
 
     //登录按钮点击出现登录页面
     function appearLoginWrap() {
@@ -434,8 +436,6 @@
                             img.src = fileReader.result;
                             //得到图片分辨率，上传的图片不能太小
                             img.onload = function() {
-                                minWidth = 960; //最小宽度
-                                minHeight = 540; //最小高度
                                 //上传的图片太小,这是个壁纸网站
                                 if (this.width < minWidth || this.height < minHeight) {
                                     uoloadMessage("上传的图片太小了,至少要" + minWidth + "*" + minHeight + "");
